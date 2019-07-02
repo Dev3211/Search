@@ -57,6 +57,16 @@
   if(!$title || !$desc) {
 	die('There was an issue crawling your website!');
   }
+	 
+  $sql = $db->prepare("SELECT title FROM search WHERE title = ?");
+  $sql->bind_param("s", $title);
+  $sql->execute();
+  $sql->store_result();
+	 
+  if($sql->num_rows == 1) {
+   $sql->close(); 
+   die('This website is already crawled!');
+  }
   
   $query = $db->prepare("INSERT INTO search (title, description, link) VALUES (?, ?, ?)");
   $query->bind_param("sss", $title, $desc, $link);
