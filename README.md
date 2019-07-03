@@ -14,8 +14,6 @@ Just upload the .sql file in your database and configure config.php to match you
 
 2. Index all pages of a specific website and find internal links(Using this we can loop through these urls and crawl them).
 
-3. Handle urls more efficiently like adding http:// if the user removes it.
+3. Maybe make an automatic crawler which crawls through Google using a specified keyword and adds website into the database?
 
-4. Maybe make an automatic crawler which crawls through Google using a specified keyword and adds website into the database?
-
-5. Add pagination if the results are more than 10: Although it shouldn't really lag the user as we are using Ajax/Jquery to display the result, it will just take some time to display the results depending if PHP returns it but pagination should improve the speed since we can display 10 results per page.
+4. Add pagination if the results are more than 10: Although it shouldn't really lag the user as we are using Ajax/Jquery to display the result, it will just take some time to display the results depending if PHP returns it but pagination should improve the speed since we can display 10 results per page.
