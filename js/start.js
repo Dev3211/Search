@@ -6,7 +6,7 @@ $(document).ready(function () {
 		 swal({title: "Please fill the field"});
 		 return
 		} else {
-			$.post("search.php", {
+			$.post("../php/search.php", {
 				search: submitt
 			}, function (data) {
 			document.getElementById("result").innerHTML = data;
@@ -21,7 +21,7 @@ $(document).ready(function () {
 		 swal({title: "Please fill the field"});
 		 return
 		} else {
-			$.post("search.php", {
+			$.post("../php/search.php", {
 				crawl: linkz
 			}, function (data) {
 		    if(data == 'done'){
