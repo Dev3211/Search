@@ -14,6 +14,31 @@
   @$tags = get_meta_tags($url['scheme'].'://'.$url['host'] );
   return $tags['description'];
  }
+
+ function checkurl($link) {
+  $results = true;
+  $link = filter_var($link, FILTER_SANITIZE_URL);
+	
+  if(!filter_var($link, FILTER_VALIDATE_URL)){
+   $results = false;	  
+  }
+	 
+  $curlInit = curl_init($link); //make sure you have curl enabled
+  curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,10);
+  curl_setopt($curlInit,CURLOPT_HEADER,true);
+  curl_setopt($curlInit,CURLOPT_NOBODY,true);
+  curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,10);
+  curl_setopt($curlInit,CURLOPT_HEADER,true);
+  curl_setopt($curlInit,CURLOPT_NOBODY,true);
+  curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);
+	 
+  $result = curl_exec($curlInit);
+  curl_close($curlInit);
+	 
+  if(!$result) $results = false;
+  
+  return $results;
+ }
  
  if ($_POST && isset($_POST["search"])) {
     $text = mysqli_real_escape_string($db, $_POST["search"]);
@@ -43,12 +68,12 @@
     }
 }else if($_POST && isset($_POST["crawl"])) {
   $link = mysqli_real_escape_string($db, $_POST["crawl"]);
-  $link = filter_var($link, FILTER_SANITIZE_URL);
+  $link1 = checkurl($link);
   
   if(empty($link)) {
 	  die('You did not fill out the required field');
-  }else if(!filter_var($link, FILTER_VALIDATE_URL)){
-	  die('Invalid url!');
+  }else if(!$link1){
+	  die('There seems to be an issue with your URL, please check!');
   }
   
   $title = title($link);
