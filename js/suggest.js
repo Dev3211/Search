@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(document).on('keyup','#search',function(){   
         let value = $(this).val();
-        $.getJSON('../suggest.php?key=' + value, function (data) {
+        $.getJSON('../php/suggest.php?key=' + value, function (data) {
             let availableTags = data;
             $("#search").autocomplete({
                 source: availableTags,
