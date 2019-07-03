@@ -6,6 +6,18 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link href="./css/style.css" rel="stylesheet">
+      <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+      </link>
+      <style>
+         #containerr {
+         display: block; 
+         position:relative
+         } 
+         .ui-autocomplete {
+         margin-top: 70px;
+         position: absolute;
+         }
+      </style>
    </head>
    <body>
       <div class="container">
@@ -14,36 +26,37 @@
       </div>
       <br><br>
       <div class="row d-flex justify-content-center">
-         <form>
-         <form  method="post" action="#" role="form">
-            <div class="row">
-               <div class="form-group col-xs-4">
+      <form>
+      <form  method="post" action="#" id="form" role="form">
+         <div class="row">
+            <div class="form-group col-xs-4">
+               <div id="containerr">
                   <label><strong>Search:</strong></label>
                   <div class="input-group">
-                     <input id="search" name="search" type="text" class="form-control">
+                     <input id="search" name="search" autocomplete="off" type="search" class="form-control" required>
                      <span class="input-group-btn">
                      <button id="submit" name="submit" class="btn btn-primary" type="button">Go!</button>
                      </span>
                   </div>
-				  <br>
-				  <label><strong>Crawl a website:</strong></label>
-				  <div class="input-group">
-                     <input id="crawl" name="crawl" type="text" value="http://" class="form-control">
+                  <br>
+                  <label><strong>Crawl a website:</strong></label>
+                  <div class="input-group">
+                     <input id="crawl" name="crawl" type="text" value="http://" class="form-control" required>
                      <span class="input-group-btn">
                      <button id="submit1" name="submit1" class="btn btn-primary" type="button">Crawl</button>
                      </span>
                   </div>
                </div>
             </div>
-         </form>
+      </form>
       </div>
-	  <div class="row d-flex justify-content-center">
-	   <div id="result"></div>
-	  </div>
+      <div class="row d-flex justify-content-center">
+         <div id="result"></div>
+      </div>
    </body>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+   <script type="text/javascript" src="./js/suggest.js"></script>
    <script type="text/javascript" src="./js/start.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>
